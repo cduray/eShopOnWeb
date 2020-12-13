@@ -5,7 +5,7 @@ namespace Microsoft.eShopWeb.ApplicationCore.Specifications
 {
     public class CatalogFilterPaginatedSpecification : Specification<CatalogItem>
     {
-        public CatalogFilterPaginatedSpecification(int skip, int take, int? brandId, int? typeId)
+        public CatalogFilterPaginatedSpecification(int skip, int take, int? brandId, int? typeId, string color)
             : base()
         {
             Query
