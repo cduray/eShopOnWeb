@@ -9,6 +9,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Entities.CatalogItemTests
         private CatalogItem _testItem;
         private int _validTypeId = 1;
         private int _validBrandId = 2;
+        private int _validColorId = 3;
         private string _validDescription = "test description";
         private string _validName = "test name";
         private decimal _validPrice = 1.23m;
@@ -16,7 +17,7 @@ namespace Microsoft.eShopWeb.UnitTests.ApplicationCore.Entities.CatalogItemTests
 
         public UpdateDetails()
         {
-            _testItem = new CatalogItem(_validTypeId, _validBrandId, _validDescription, _validName, _validPrice, _validUri);
+            _testItem = new CatalogItem(_validTypeId, _validBrandId, _validColorId, _validDescription, _validName, _validPrice, _validUri);
         }
 
         [Fact]

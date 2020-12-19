@@ -47,5 +47,14 @@ namespace Microsoft.eShopWeb.Web.Services
                 return await _catalogViewModelService.GetTypes();
             });
         }
+
+        public async Task<IEnumerable<SelectListItem>> GetColors()
+        {
+            return await _cache.GetOrCreateAsync(CacheHelpers.GenerateColorsCacheKey(), async entry =>
+            {
+                entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
+                return await _catalogViewModelService.GetColors();
+            });
+        }
     }
 }

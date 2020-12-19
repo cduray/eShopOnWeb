@@ -41,7 +41,7 @@ namespace Microsoft.eShopWeb.Web.Services
         {
             _logger.LogInformation("GetCatalogItems called.");
 
-            var filterSpecification = new CatalogFilterSpecification(brandId, typeId);
+            var filterSpecification = new CatalogFilterSpecification(brandId, typeId, color);
             var filterPaginatedSpecification =
                 new CatalogFilterPaginatedSpecification(itemsPage * pageIndex, itemsPage, brandId, typeId, color);
 
@@ -101,6 +101,22 @@ namespace Microsoft.eShopWeb.Web.Services
 
             var items = types
                 .Select(type => new SelectListItem() { Value = type.Id.ToString(), Text = type.Type })
+                .OrderBy(t => t.Text)
+                .ToList();
+
+            var allItem = new SelectListItem() { Value = null, Text = "All", Selected = true };
+            items.Insert(0, allItem);
+
+            return items;
+        }
+
+        public async Task<IEnumerable<SelectListItem>> GetColors()
+        {
+            _logger.LogInformation("GetColors called.");
+            var colors = await _typeRepository.ListAllAsync();
+
+            var items = colors
+                .Select(colors => new SelectListItem() { Value = colors.Id.ToString(), Text = colors.Type })
                 .OrderBy(t => t.Text)
                 .ToList();
 

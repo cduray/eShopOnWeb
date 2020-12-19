@@ -10,5 +10,7 @@ namespace Microsoft.eShopWeb.Web.Services
         Task<CatalogIndexViewModel> GetCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId, string color);
         Task<IEnumerable<SelectListItem>> GetBrands();
         Task<IEnumerable<SelectListItem>> GetTypes();
+
+        Task<IEnumerable<SelectListItem>> GetColors();
     }
 }

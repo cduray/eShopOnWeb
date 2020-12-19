@@ -21,5 +21,10 @@ namespace Microsoft.eShopWeb.Web.Extensions
         {
             return "types";
         }
+
+        public static string GenerateColorsCacheKey()
+        {
+            return "colors";
+        }
     }
 }
