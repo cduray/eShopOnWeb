@@ -5,10 +5,10 @@ namespace Microsoft.eShopWeb.ApplicationCore.Specifications
 {
     public class CatalogFilterSpecification : Specification<CatalogItem>
     {
-        public CatalogFilterSpecification(int? brandId, int? typeId, string color)
+        public CatalogFilterSpecification(int? brandId, int? typeId, int? colorId)
         {
             Query.Where(i => (!brandId.HasValue || i.CatalogBrandId == brandId) &&
-                (!typeId.HasValue || i.CatalogTypeId == typeId));
+                (!typeId.HasValue || i.CatalogTypeId == typeId) && (!colorId.HasValue || i.CatalogColorId == colorId));
         }
     }
 }

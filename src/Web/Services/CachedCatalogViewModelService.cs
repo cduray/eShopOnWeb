@@ -28,14 +28,14 @@ namespace Microsoft.eShopWeb.Web.Services
                     });
         }
 
-        public async Task<CatalogIndexViewModel> GetCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId, string color)
+        public async Task<CatalogIndexViewModel> GetCatalogItems(int pageIndex, int itemsPage, int? brandId, int? typeId, int? colorId)
         {
-            var cacheKey = CacheHelpers.GenerateCatalogItemCacheKey(pageIndex, Constants.ITEMS_PER_PAGE, brandId, typeId, color);
+            var cacheKey = CacheHelpers.GenerateCatalogItemCacheKey(pageIndex, Constants.ITEMS_PER_PAGE, brandId, typeId, colorId);
 
             return await _cache.GetOrCreateAsync(cacheKey, async entry =>
             {
                 entry.SlidingExpiration = CacheHelpers.DefaultCacheDuration;
-                return await _catalogViewModelService.GetCatalogItems(pageIndex, itemsPage, brandId, typeId, color);
+                return await _catalogViewModelService.GetCatalogItems(pageIndex, itemsPage, brandId, typeId, colorId);
             });
         }
 

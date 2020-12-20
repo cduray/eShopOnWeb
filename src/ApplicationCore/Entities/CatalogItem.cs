@@ -60,6 +60,12 @@ namespace Microsoft.eShopWeb.ApplicationCore.Entities
             CatalogTypeId = catalogTypeId;
         }
 
+        public void UpdateColor(int catalogColorId)
+        {
+            Guard.Against.Zero(catalogColorId, nameof(catalogColorId));
+            CatalogTypeId = catalogColorId;
+        }
+
         public void UpdatePictureUri(string pictureName)
         {
             if (string.IsNullOrEmpty(pictureName))

@@ -12,7 +12,7 @@ namespace Microsoft.eShopWeb.Web.ViewModels
         public List<SelectListItem> Colors { get; set; }
         public int? BrandFilterApplied { get; set; }
         public int? TypesFilterApplied { get; set; }
-        public string ColorsFilterApplied { get; set; }
+        public int? ColorsFilterApplied { get; set; }
         public PaginationInfoViewModel PaginationInfo { get; set; }
     }
 }

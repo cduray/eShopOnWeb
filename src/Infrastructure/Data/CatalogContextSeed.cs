@@ -40,6 +40,14 @@ namespace Microsoft.eShopWeb.Infrastructure.Data
 
                     await catalogContext.SaveChangesAsync();
                 }
+
+                if (!await catalogContext.CatalogColors.AnyAsync())
+                {
+                    await catalogContext.CatalogColors.AddRangeAsync(
+                        GetPreconfiguredCatalogColors());
+
+                    await catalogContext.SaveChangesAsync();
+                }
             }
             catch (Exception ex)
             {

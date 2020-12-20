@@ -5,12 +5,12 @@ namespace Microsoft.eShopWeb.ApplicationCore.Specifications
 {
     public class CatalogFilterPaginatedSpecification : Specification<CatalogItem>
     {
-        public CatalogFilterPaginatedSpecification(int skip, int take, int? brandId, int? typeId, string color)
+        public CatalogFilterPaginatedSpecification(int skip, int take, int? brandId, int? typeId, int? colorId)
             : base()
         {
             Query
                 .Where(i => (!brandId.HasValue || i.CatalogBrandId == brandId) &&
-                (!typeId.HasValue || i.CatalogTypeId == typeId))
+                (!typeId.HasValue || i.CatalogTypeId == typeId) && (!colorId.HasValue || i.CatalogColorId == colorId))
                 .Paginate(skip, take);
         }
     }
